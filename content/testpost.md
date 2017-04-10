@@ -1,6 +1,6 @@
 Title: First Post
 Date: 2017-04-08
-Categor: Test
+Category: Test
 
 # My Test Post
 
