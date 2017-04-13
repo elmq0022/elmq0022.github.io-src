@@ -1,6 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
+import os
+
 
 AUTHOR = u'Aaron Elmquist'
 SITENAME = u'Leaked Memories'
@@ -47,7 +46,7 @@ POST_LIMIT = 3
 # PAGINATION = False
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 # Formatting for dates
 
@@ -59,13 +58,12 @@ ARTICLE_URL = "{date:%Y}/{date:%m}/{slug}/"
 ARTICLE_SAVE_AS = "{date:%Y}/{date:%m}/{slug}/index.html"
 
 # Plugins
-###
-# CONSIDER ADDING THESE
-###
 
-# PLUGIN_PATH = 'plugins'
-# PLUGINS = ['sitemap', 'neighbors', 'related_posts']
+# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+# PLUGIN_PATHS = [os.path.join(BASE_DIR, 'pelican-plugins', ), ]
 
+PLUGIN_PATHS = [r"C:\Users\customer\pelican-plugins"]
+PLUGINS = ['sitemap', 'neighbors', 'related_posts']
 
 # Specify theme
 
@@ -74,7 +72,7 @@ THEME = 'BT3-Flat'
 SWIFTYPE = ''
 SITE_THUMBNAIL = 'https://dl.dropboxusercontent.com/u/299446/logo.png'
 SITE_THUMBNAIL_TEXT = ' Leaked Memories'
-SITESUBTITLE = 'Sharing my Experiences Coding'
+SITESUBTITLE = 'Sharing Coding Experiences'
 
 # DISQUS_SITENAME = 'networktsukkomime'
 # GOOGLE_ANALYTICS = ''
@@ -104,7 +102,7 @@ SITEMAP = {
 FAVICON = 'https://dl.dropboxusercontent.com/u/299446/logo.png'
 ICON = 'https://dl.dropboxusercontent.com/u/299446/logo.png'
 SHORTCUT_ICON = 'https://dl.dropboxusercontent.com/u/299446/logo.png'
-HEADER_IMAGE = 'https://dl.dropboxusercontent.com/u/299446/logo-invert.png'
+HEADER_IMAGE = 'images/bamboo.jpg'
 BACKGROUND_IMAGE = 'http://images.nationalgeographic.com/wpf/media-live/photos/000/763/cache/egret-fog-reflection_76312_990x742.jpg'
 # COPYRIGHT = '2015 &copy; All Rights Reserved.'
 # Google fonts can be downloaded with
@@ -122,64 +120,9 @@ PERSONAL_INFO = """My Name is Aaron."""
 # work
 WORK_DESCRIPTION = ''
 # items to descripe a work, "type", "cover-image link", "title", "descption", "link"
-WORK_LIST = (('link', 
+WORK_LIST = (('link',
               'https://dl.dropboxusercontent.com/u/299446/BT3-Flat.png',
               'BT3-Flat',
               'A BT3 flat theme for pelican',
               'https://github.com/KenMercusLai/plumage'),
             )
-
-
-
-
-#########################################################################################
-SITEURL = ''
-
-
-DEFAULT_LANG = u'English'
-
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
-
-
-# Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
-
-
-# Theme Specific Settings
-
-SITETITLE = 'Leaked Memories'
-SITESUBTITLE = 'Sharing My Experiences in Coding'
-
-# provided as examples, they make ‘clean’ urls. used by MENU_INTERNAL_PAGES.
-TAGS_URL           = 'tags'
-TAGS_SAVE_AS       = 'tags/index.html'
-AUTHORS_URL        = 'authors'
-AUTHORS_SAVE_AS    = 'authors/index.html'
-CATEGORIES_URL     = 'categories'
-CATEGORIES_SAVE_AS = 'categories/index.html'
-ARCHIVES_URL       = 'archives'
-ARCHIVES_SAVE_AS   = 'archives/index.html'
-ABOUT_ME_URL       = 'about-me'
-ABOUT_ME_SAVE_AS   = 'about-me/index.html'
-
-
-# use those if you want pelican standard pages to appear in your menu
-MENU_INTERNAL_PAGES = (
-    ('Tags', TAGS_URL, TAGS_SAVE_AS),
-    ('Authors', AUTHORS_URL, AUTHORS_SAVE_AS),
-    ('Categories', CATEGORIES_URL, CATEGORIES_SAVE_AS),
-    ('Archives', ARCHIVES_URL, ARCHIVES_SAVE_AS),
-    ('About Me', ABOUT_ME_URL, ABOUT_ME_SAVE_AS),
-)
-
-# additional menu 
-# MENUITEMS = (
-#     ('GitHub', 'https://github.com/'),
-#     ('Linux Kernel', 'https://www.kernel.org/'),
-# )
-
