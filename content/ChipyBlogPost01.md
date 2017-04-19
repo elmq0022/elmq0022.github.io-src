@@ -24,7 +24,7 @@
 
 
 # Preparation
- I knew it would be unproductive to walk into this program without any preparation.  So, I worked through a good chunk of the following resources the month prior to the mentorship kickoff.  
+ I knew it would be unproductive to start this program without any preparation.  So, I worked through a good chunk of the following resources the month prior to the mentorship kickoff.  
 
  - [Lynda.com's Up and Running with Django](https://www.lynda.com/Django-tutorials/Up-Running-Python-Django/386287-2.html)
  - [The first 6 chapters of Django Core](http://djangobook.com/)
@@ -135,7 +135,7 @@ class Command(BaseCommand):
         print("Complete. There were {} entries entered into the database.".format(count))
 ```
 
-This did take a several attempts on my part. My first iteration, for example, did not use Django's ```bulk_create``` function.  I figured hitting the database over and over would be inefficient, I didn't realize it would take hours to load.  Also, my intially code had two models, one for the Chinese entries and another for the English definitions.  That approach proved to be uncessarily complicated while not providing any tangible benefits.
+This did take several attempts on my part. My first iteration, for example, did not use Django's ```bulk_create``` function.  I figured hitting the database over and over would be inefficient, I didn't realize it would take hours to load.  Also, my intial code had two models, one for the Chinese entries and another for the English definitions.  That approach proved to be uncessarily complicated while not providing any tangible benefits.
 
 
 # Conclusion
