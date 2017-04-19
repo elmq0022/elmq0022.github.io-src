@@ -31,9 +31,9 @@
  - [Team Treehouse's Django Track](https://teamtreehouse.com/)
  - [The First 3 chapters of the ebook Pro Git](https://git-scm.com/book/en/v2)
  
- This preperation has allowed me to ask my mentor reasonable questions about Django from the start and considerably accelerated my progress. 
+This preperation has allowed me to ask my mentor reasonable questions about Django from the start and considerably accelerated my progress. 
 
- By the way, if you want to get started in Django development, all these resources are inexpensive or freely available through the local library. 
+By the way, if you want to get started in Django development, all these resources are inexpensive or freely available through the local library. 
 
   
 # Progress
