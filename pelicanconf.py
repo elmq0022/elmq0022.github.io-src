@@ -3,7 +3,7 @@ import os
 
 AUTHOR = u'Aaron Elmquist'
 SITENAME = u'Leaked Memories'
-SITEURL = r'http://elmq0022.github.io'
+SITEURL = ''
 
 PATH = 'content'
 
