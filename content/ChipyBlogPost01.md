@@ -1,6 +1,6 @@
- Title: Chipy Mentorship (Part 1 of 3) 
- Date: 2017-04-20 12:00
- Category: Chipy, Python, Mentorship
+Title: Chipy Mentorship (Part 1 of 3) 
+Date: 2017-04-20 12:00
+Category: Chipy, Python, Mentorship
 
 
 # About the Chipy Mentorship
