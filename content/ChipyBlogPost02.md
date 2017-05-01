@@ -30,16 +30,16 @@
   I had a couple of options to deal with item two.  The first and probably standard way is to use 
   Standfords NLP package as a server or from within pythons NLTK package.  I was going to go this route and set it up NLP as service on my AWS instance.  The problem is java is a bit of a resource hog when it comes to memory. Just spinning up the segmenter and the JVM was enough to burn through the memory I had allocated on my EC2 t.nano instance.  Two steps forward, three steps back.  
 
- I did a brief search on github which lead me to a python package called [jieba](LINK).   
+ I did a brief search on github which lead me to a python package called [jieba](LINK). After a scanning through the README and a `quick pip install jieba`, I was back in business.   
   
 
- This will also address another issue I have noticed. My search only works well on a single characters or group of characters.  Entering an entire sentence
- isn't possible with previous implementation.  So if I could segment a Chinese sentence, I could have the program search each term and 
- hopefully return something reasonable.  
+ Having a library like this solves another issue I had. The full text search only worked well on an exact dictionary entry.  Entering an entire sentence
+ and getting back a resonable result wasn't possible with previous implementation.  Segmenting the Chinese sentence and searching for each segement has yielded pretty reasonable results. 
 
  # Implemenation - How to do a SQL Query in a 1,000 Lines of Code or More
- For what seems to be a really simple application this is a ... ton of work.  I mean really....
-
+ So when you look at the [hanyu.pro](https://www.hanyu.pro) the functionality maynot look all that stellar.  This little site is, in fact, hours and hours of work.  I've found deploying a site to AWS and hardening it too be far more work than I had initally imagined.  I can see why services like google appengine and heruko are
+ so popular for smaller projects. I have spent at least 4 hours working on AWS deployment with my mentor and several hours more on my own fiddling and reading docs.  
+ Django is a "framework for perfections for prefectionists with deadlines" to be sure, but every page you see is composed of a view, a model, and a template.  There's likely more there to get the data in to the database and maintain it.  
 
 # Dev Ops Stuff...
 Jordan helped me out a lot with AWS on the first go around.  I then spent a couple (frustrating) days getting aws, nginx, gunicorn, and django all playing 
@@ -52,3 +52,6 @@ encryption service up and running so I could server HTTPS instead of HTTP.  This
 passwords.  
 
 After two hours of messing around we were mostly done with rerouting http request to https as an exercise for me to complete.  
+
+
+#WHAT ELSE????
