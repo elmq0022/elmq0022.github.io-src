@@ -4,36 +4,34 @@
 
 
 # Updates and Fixes
- Well since my last post, I finihsed up most of the login stuff, but it could use some polish and an email backend.  
+ Since my last post, I finihsed up most of the login stuff, but it could use some polish and an email backend for accounts that need to be reset.  
  
- bootstrap working working from the CDN and I am trying to make stuff look better.  I found some good advice on fonts and 
- CSS styling for sites with a lot of Chinese [here](URL) 
+ I have bootstrap working working from the CDN and I am slowly trying to make the site look better.  
+ I found some good advice on Chinese font selection and CSS styling [here](URL) 
 
- I've since added a my models to Django's admin. That's rather painless exercise for the basic stuff, but there is plenty 
- of customization a person can do if he really wants to.  
+ I've since added all the database models to Django's admin. Doing that was a rather painless exercise. There is, however, plenty 
+ of admin customization customization that could be done.  For now, what I have seems to sufice. 
  
- I showed my project to my wife, and she quickly found a bug the full text search.  
- The english definitions from CC-CEDICT are separated by "/" characters and when a specific key workd like "hello" occured in the 
- defintiona as ".../hello..." the entry was not found.  
- This was an easy fix done with a regex that substitues all the instances of "/" with "\s/\s".
+ I showed my wife the full-text search.  She quickly and, quite happily I might add, broke it....  Looks like I need to add some tests.  
+ The english definitions in CC-CEDICT are separated by "/" characters without spaces.  This format was the culprit.  When searching for an instances 
+ of the word "hello" an occurence like ".../hello..." was not found.  I fixed this with a regex that substitues all the instances of "/" with "\s/\s".
 
 
 # Next Project - Suggesting Items to Learn
  I really want the site to give the user meaningful characters (a single chinese character) and meaningful words (one or more chinese characters) to learn.
- To do that I either need a table of frequency of occurence of these items in chinese lanaguage.  Since I don't have one, I'm going to have to make one.
+ To do that I either need a table of frequency of occurence of these items in chinese lanaguage.  Since I don't have one, I'll will have to make one.
 
- This posses two main difficulties.  First, is the choice of corpus.  The documents I choose to analyze will impact the frequency of the words observed directly. 
- The second issue is that Chinese texts do not delimit words with a space.   
- To suggest characters and words to learn I need to start doing some) frequency analysis on all my entries.  Unfortunately Chinese sentences do not have any spaces in golang to get in the right mindset to learn Chinese...).  
+ This has two main difficulties.  First, is the choice of corpus.  The documents I choose to analyze will impact the frequency of the words observed directly. 
+ The second issue is that Chinese texts do not delimit words with a space. No significant whitespace?  That's not very ptyhonic.  Maybe golang would be a better
+ choice for this project (China's most popluar language).
 
- For now, I'm going to basically ignore the first issue and use Wikipedia because it's there.  This is probably not a great choice 
- dates and times place names etc are going to show up way too often. 
+ I'm going to basically ignore the first issue and use Wikipedia until a fellow mentee mentioned [this](http://www.lancaster.ac.uk/fass/projects/corpus/UCLA/)
 
-  The second issue needs to be addressed. Enter the good folks form stanford
-  who work on the Stanford NLP, and the good folks who maintain python's NLTK
-  which interfaces Stanford's NLP kit which happens to be written Java....
-  BOOO.... mainly becaue the JVM isr really slow to fire up. 
-  Fortunately there seems to be a server option for the program, so I can probably make this a dameon and use it as a service.  
+  I had a couple of options to deal with item two.  The first and probably standard way is to use 
+  Standfords NLP package as a server or from within pythons NLTK package.  I was going to go this route and set it up NLP as service on my AWS instance.  The problem is java is a bit of a resource hog when it comes to memory. Just spinning up the segmenter and the JVM was enough to burn through the memory I had allocated on my EC2 t.nano instance.  Two steps forward, three steps back.  
+
+ I did a brief search on github which lead me to a python package called [jieba](LINK).   
+  
 
  This will also address another issue I have noticed. My search only works well on a single characters or group of characters.  Entering an entire sentence
  isn't possible with previous implementation.  So if I could segment a Chinese sentence, I could have the program search each term and 
