@@ -1,17 +1,30 @@
  Title: Chipy Mentorship (Part 2 of 3) 
- Date: 2017-05-xx 12:00 
+ Date: 2017-05-24 12:00 
  Category: Chipy, Python, Mentorship
+
+# Recap 
+In my last post I had detailed some pretty substantial progress on my first real Django applicaton Hanyu.  
+Up to the time of that post, I had done everything form getting setup with git and github to loading my database and deploying the site to AWS.  
+Since then things have been productive but in different areas.  First I fixed a bunch of issues from my first go around and cleaned up some code.  
+I'll just highlight a few:
+
+- reworked how the database is loaded and updated
+- added the models to Django's admin
+- improved the full-text search results after my significant found an issues 
+
+
+
+The product of my efforts can be seen at [www.hanyu.pro](https://www.hanyu.pro).  
+The full code for the site is on [github](https://github.com/elmq0022/hanyu/).
+
 
 
 # Updates and Fixes
- Since my last post, I finihsed up most of the login stuff, but it could use some polish and an email backend for accounts that need to be reset.  
+ Since my last post, I finihsed up user authentication work minus the an email backend for accounts that need to be reset.  
  
  I have bootstrap working working from the CDN and I am slowly trying to make the site look better.  
  I found some good advice on Chinese font selection and CSS styling [here](URL) 
 
- I've since added all the database models to Django's admin. Doing that was a rather painless exercise. There is, however, plenty 
- of admin customization customization that could be done.  For now, what I have seems to sufice. 
- 
  I showed my wife the full-text search.  She quickly and, quite happily I might add, broke it....  Looks like I need to add some tests.  
  The english definitions in CC-CEDICT are separated by "/" characters without spaces.  This format was the culprit.  When searching for an instances 
  of the word "hello" an occurence like ".../hello..." was not found.  I fixed this with a regex that substitues all the instances of "/" with "\s/\s".
