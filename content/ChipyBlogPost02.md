@@ -1,6 +1,11 @@
- Title: Chipy Mentorship (Part 2 of 3) 
- Date: 2017-05-24 12:00 
- Category: Chipy, Python, Mentorship
+Title: Chipy Mentorship (Part 2 of 3) 
+Date: 2017-05-24 12:00 
+Category: Chipy, Python, Mentorship
+
+# TLDR;
+Since I last posted I've fixed a lot of stuff, cleaned up the look, and some data analytic capabilities thanks to jieba.
+My next steps are building a SPA quiz application and automating my AWS deploy via fabric. 
+Vist [hanyu.pro](https://www.hanyu.pro) and [github](https://github.com/elmq0022/hanyu) to see my progress.  
 
 # Recap 
 In my last post I discussed my pretty substantial progress on my first real Django applicaton Hanyu.  
@@ -13,9 +18,6 @@ The pace was pretty fast and did leave me with a laundry list of things to clean
 - Combined my two separate searches into a single search.
 - Cleaned up the authentication application.
 
-The results can be seen at [www.hanyu.pro](https://www.hanyu.pro).  
-The full code for the site is on [github](https://github.com/elmq0022/hanyu/).
-
 # How is Chinese Like an Obfuscated C Contest?
 There's a lot of differnces between Chinese and English.  
 First the writing system isn't phonetic in the way English and the Latin alphabet is.  
@@ -26,7 +28,7 @@ For example wodedahuanggou can be parsed a couple ways:
 
     wode dahuang gou 
  
-Which means "my rubarb dog".  Yeah probably not quite right.
+Which means "my rubarb dog".  Yeah, probably not quite right.
 
     wode da huang gou 
     
@@ -54,50 +56,51 @@ Python +1, Java nada.
 
 By the way, if you're wondering, both jieba and the Stanford segmenter fail the test above.
 
+
+# Next Project - Suggesting Items to Learn
+Now that I can segment Chinese text, I can do a frequency analysis on a corpus of documents.  
+This, in turn, will allow me to suggest frequently used characters and words for a user to learn.  
+I have, in fact, started implementing some of this, but there are still details to work through.  
+
+
 # Hey Better Looking
 I'm not a frontend dev and although I've heard the terms javascript, jquery, and bootstrap before, I've never really used them.  
 So when I stumbled upon [AdminLTE](), I was pretty stoked.   
 I wouldn't call it pretty, but hey it's pretty reasonable and configuralbe. 
-Everything has been wired in, and it even displays your [gravitar]() if that's your thing.  
+Everything has been wired in, and it even displays the user's [gravitar]().
+
 
 # Dev, Ops, or Maybe Both?
-Jordan helped me out a lot with AWS on the first go around.  I then spent a couple (frustrating) days getting aws, nginx, gunicorn, and django all playing 
-nicely together.  
+Jordan, my mentor, helped me a lot with the initial AWS deploy.  
+I then spent a couple of frustrating but rewarding days getting AWS, nginx, gunicorn, and Django to all play together.  
 
-Jordan looked at my setup and noticed a fair amount of security stuff to address...
-Okay, so it was only really two items.  There really should be a user with read only access setup to access and server the application.  
-This techincally should prevent a hacker from getting in on the active account and modifing the code directly.  The other issue was getting an 
-encryption service up and running so I could server HTTPS instead of HTTP.  This is important since I'm potentially dealing with other users' 
-passwords.  
+Since the inital deploy Jordan has help harden the AWS security a bit.  
+First, he had me create a user with read only access to server the application.  
+This should help prevent a hacker from hijacking the active account and using it modify code on the site directly.  
+The other issue was getting an encryption service up and running, so the site serves HTTPS instead of HTTP.  
+This is important because I don't want password sent to my site unencrypted. 
 
-After two hours of messing around we were mostly done with rerouting http request to https as an exercise for me to complete.  
+# What's Next 
+There's a couple big ticket items that I want to finish up before the mentorship is over.  
+One is to build a quiz application and do it using a SPA architecture.  
+The other is to automate my deploy to AWS.  
 
+Jordan and I discussed the architecture of the quiz applicaton the other day. 
+After a brief discussion we decided the most basic approach would good enough for my first attempt. 
+Basically I'll use [JQuery]() for the frontend piece because it works and I won't have pickup an entire framework right away. 
+Really the javascript landscape has way too many frameworks for my taste.  Besides who know which one is going to be popular next week. 
 
-Additionally 
+The backend will be pretty straight forward to. 
+I'll use Django's class based views and the JSON Response Mixin to serve up my JSON data.  
+Again, I've elected to use what's already there instead of a framework like Django REST Framework or tastypie.  
+If things get more involved I can pick a framework then. 
 
-# Next Project - Suggesting Items to Learn
- I really want the site to give the user meaningful characters (a single chinese character) and meaninul words (one or more chinese characters) to learn.
- To do that I either need a table of frequency of occurence of these items in chinese lanaguage.  Since I don't have one, I'll will have to make one.
+I've actually really liked learning more AWS and the linux (specifically ubuntun) throughout my project.  
+The one thing that's been kind of a bummer is not having a one click deploy.  
+To remedy this I'm going automate my AWS deploy with fabric.  
+Ansible, Chef, and Puppet are more first tier choices these days. 
+But at this stage, my deploy isn't crazy complicated, and it's unlikely I will need any additional instances anytime soon.
 
- This has two main difficulties.  First, is the choice of corpus.  The documents I choose to analyze will impact the frequency of the words observed directly. 
- The second issue is that Chinese texts do not delimit words with a space. No significant whitespace?  That's not very ptyhonic.  Maybe golang would be a better
- choice for this project (China's most popluar language).
-
- I'm going to basically ignore the first issue and use Wikipedia until a fellow mentee mentioned [this](http://www.lancaster.ac.uk/fass/projects/corpus/UCLA/)
-
-  I had a couple of options to deal with item two.  The first and probably standard way is to use 
-  Standfords NLP package as a server or from within pythons NLTK package.  I was going to go this route and set it up NLP as service on my AWS instance.  The problem is java is a bit of a resource hog when it comes to memory. Just spinning up the segmenter and the JVM was enough to burn through the memory I had allocated on my EC2 t.nano instance.  Two steps forward, three steps back.  
-
- I did a brief search on github which lead me to a python package called [jieba](LINK). After a scanning through the README and a `quick pip install jieba`, I was back in business.   
-  
-
- Having a library like this solves another issue I had. The full text search only worked well on an exact dictionary entry.  Entering an entire sentence
- and getting back a resonable result wasn't possible with previous implementation.  Segmenting the Chinese sentence and searching for each segement has yielded pretty reasonable results. 
-
- # Implemenation - How to do a SQL Query in a 1,000 Lines of Code or More
- So when you look at the [hanyu.pro](https://www.hanyu.pro) the functionality maynot look all that stellar.  This little site is, in fact, hours and hours of work.  I've found deploying a site to AWS and hardening it too be far more work than I had initally imagined.  I can see why services like google appengine and heruko are
- so popular for smaller projects. I have spent at least 4 hours working on AWS deployment with my mentor and several hours more on my own fiddling and reading docs.  
- Django is a "framework for perfections for prefectionists with deadlines" to be sure, but every page you see is composed of a view, a model, and a template.  There's likely more there to get the data in to the database and maintain it.  
-
-
-#WHAT ELSE????
+# See My Progress First Hand
+You can see the actual site at [www.hanyu.pro](https://www.hanyu.pro).  
+All the code is on [github](https://github.com/elmq0022/hanyu/).
