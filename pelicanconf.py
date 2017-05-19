@@ -115,7 +115,7 @@ BACKGROUND_IMAGE = r'http://images.nationalgeographic.com/wpf/media-live/photos/
 
 # About ME
 PERSONAL_PHOTO = ""
-PERSONAL_INFO = """My Name is Aaron."""
+PERSONAL_INFO = """My Name is Aaron, and I like to code often in Python."""
 
 # work
 WORK_DESCRIPTION = ''
