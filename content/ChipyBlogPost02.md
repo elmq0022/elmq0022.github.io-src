@@ -1,6 +1,6 @@
 Title: Chipy Mentorship (Part 2 of 3)
 Date: 2017-05-24 12:00
-Category: Chipy, Python, Mentorship
+Category: Chipy Mentorship
 Tags: Chipy, Python, Mentorship
 
 # TLDR;
