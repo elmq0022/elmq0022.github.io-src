@@ -4,43 +4,52 @@ Category: Chipy Mentorship
 Tags: Chipy, Python, Mentorship
 Status: draft
 
-
 # TLDR
-Summarize here...
+JavaScript + Django = no page refresh...?
+The Fabric library makes automating deployment to an existing AWS instance mostly a snap.
+Thanks to [Chipy](http://www.chipy.org) and my fantasic mentor Jordan for great experience.
 
-# Life on the Frontend - Creating My First SPA
+# Life on the Frontend
+The last part of my project was to build a multiple choice quiz application.
+I also wanted to take a crack at creating a single page app (SPA) that didn't refesh the entier page.
+So, down the JavaScript rabbit hole I went...
 
-# Learning Javascript and JQuery
+# Framework? 
+There's a lot of Javascript frameworks out there these days. 
+And, a fullstack developer really needs to know at lease one of them. 
+I should really learn one at some point, but right getting something up and running is the priority.
+So, I opted to use the JQuery instead. 
+JQuery has basically everything I needed to handel JSON requests and reponses and manipulate the DOM. 
 
-# Getting JQuery to Read and Send JSON
+# Handeling JSON with Django
+I made some minimal changes to the normal Django workflow to send and process JSON data.
+First, I gave my quiz question model a toJSON method.
+Second I had to specify the content type of the HttpResponse as JSON data which is easy as:
 
-# Getting Django to Send JSON
+    #!python
+    return HttpResponse(json.dumps(result), content_type="application/json")
 
-# Testing with Pytest-Django
-- Why pytest django 
-- Add the django app as a user so it can create tables on the database
-- telling pytest it needs to use the database
-- initializing the database 
+# Getting Django and JQuery to Play Together
+There is some boiler plate code needed to select and the CSRF token off the page and send it with the request.
+If you want to read more about there's an overview in the [Django documentation](http://www.link.com).
+There's also a good tutorial on the overall approach from the guys at [RealPython](http://www.realpython.com)
 
 # Deploying with Fabric ...?
-
 Fabric is a niffty tool to run bash commands localy or on a remote host via ssh.
 A really basic fab file would look something like this:
 
-
-...python
+    #!python
     # in fabfile.py
 
     def caffinate_coder():
         print("Making coffee.")
-
 
 Now from the command line call fab caffinate_coder and it will echo back "Making coffee."
 This should be straight forward because it's just python.
 To do meaningful work for a deploy these functions will need to issue batch commands locally and on the remote host.
 Fortunately Fabric makes this easy with the local and run commands.  Here's a more complicated file to discuss
 
-...python
+    #!python
     # in fabfile.py
     env.hosts = ["list of remote hosts ip address or domain name",]
     env.user = "< user name for remote >"
@@ -61,7 +70,6 @@ The first function use the local command and "ls" to list the files on the local
 The second function does the same thing, but on *each* of the listed remote servers.
 So yes, you could just write bash scripts and run them on the server side, but Fabric makes deploying to multiple instances much easier.
 
-
 I did run into a couple gotchas though.
 First Fabric was looking form a .ssh/config file and I didn't have one on windows.
 The solutions was simple enough; create an empty .ssh/config file in my user directory.
@@ -72,5 +80,6 @@ Fabric provides a couple nice [context manager]() , [prefix](), for things like 
 As an added bonus for all the python 3 converts, I got some good advice on Chipy's Slack channel to use Fabric3.
 This fork of Fabric supports a more minimal, and perhapse more sane, set of python version, python 2.7+ and python 3.4+.
 
-
 # Closing Thoughts
+The folks at Chipy have created a great community for python programmers of all levels.
+I cannot thank Jordan enough for taking the time to mentor me throughout over the last few months.
