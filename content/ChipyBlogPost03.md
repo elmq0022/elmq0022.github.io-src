@@ -6,15 +6,15 @@ Status: draft
 
 # TLDR
 With a little help from JQuery the final bits of my project came together with a multiple choice quiz implemented as a single page application.
-Additionally, my EC2 depolyment is now a single shell command thanks to Fabric and some very straight foward python scripting. 
+Additionally, my EC2 deployment is now a single shell command thanks to Fabric and some very straight forward python scripting. 
 
 # Life on the Frontend
-The last major feature I wanted to add to hanyu.pro was a multiple choice quiz inmplemented as a single page application.
+The last major feature I wanted to add to hanyu.pro was a multiple choice quiz implemented as a single page application.
 There are a lot of JavaScript frameworks these days.
 So many that's it could be hard to pick.
-But the JSON handeling and DOM manipulation I needed were rather minimal, so I just stuck with JQuery.
+But the JSON handling and DOM manipulation I needed were rather minimal, so I just stuck with JQuery.
 
-# Handeling JSON with Django and JQuery
+# Handling JSON with Django and JQuery
 The changes needed to make a Django view function work with JSON data aren't all that bad.
 First, I gave my Quiz Model a toJSON method that change returns a JSON representation of a quiz instance.
 Second, instead of rendering and returning a template the five function now return an HTTP response with JSON content type as seen below.
@@ -74,10 +74,10 @@ This fork of Fabric supports a more minimal, and perhapse more sane, set of pyth
 
 # Thanks to my Mentor, Chipy, and All the Fantastic Mentors and Mentees
 The python metorship has bee a fun and rewarding experience for me.
-I didn't anticipate learning as much as I did or covring the large range of topics that we discussed.
+I didn't anticipate learning as much as I did or covering the large range of topics that we discussed.
 
 I have to thank Jordan for taking the time to mentor me these last 3 months.
 He has been patient and extremely helpful guiding me through this project.
 
-I also want to say thank you to Ray, Hana, and Patrick for orgainizing everything.
+I also want to say thank you to Ray, Hana, and Patrick for organizing everything.
 Thanks to the all the other mentors as well for dedicating their valuable free time to this mentorship session.
