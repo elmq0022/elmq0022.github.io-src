@@ -2,7 +2,6 @@ Title: Chipy Mentorship (Part 3 of 3)
 Date: 2017-05-24 12:00
 Category: Chipy Mentorship
 Tags: Chipy, Python, Mentorship
-Status: draft
 
 # TLDR
 With a little help from JQuery the final bits of my project came together with a multiple choice quiz implemented as a single page application.
